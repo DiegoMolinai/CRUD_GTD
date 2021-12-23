@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PrincipalComponent } from './Componentes/principal/principal.component';
+import { ListaTareasComponent } from './Componentes/lista-tareas/lista-tareas.component';
 
 const routes: Routes = [
-  {path: '',component: PrincipalComponent}
+  {path:'', redirectTo: '/tareas', pathMatch:'full'},
+  {path: 'tareas', component:ListaTareasComponent}
 ];
 
 @NgModule({

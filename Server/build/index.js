@@ -22,8 +22,8 @@ class Server {
         this.app.use(express_1.default.urlencoded({ extended: false }));
     }
     routes() {
-        this.app.use('/indexRoutes', indexRoutes_1.default);
-        this.app.use('/tareasRoutes', tareasRoutes_1.default);
+        this.app.use('/', indexRoutes_1.default);
+        this.app.use('/api/tareas', tareasRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

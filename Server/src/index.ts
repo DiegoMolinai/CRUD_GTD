@@ -26,8 +26,8 @@ class Server {
 
     routes():void{
 
-        this.app.use('/indexRoutes',indexRoutes);
-        this.app.use('/tareasRoutes',tareasRoutes);
+        this.app.use('/',indexRoutes);
+        this.app.use('/api/tareas',tareasRoutes);
 
     }
 
