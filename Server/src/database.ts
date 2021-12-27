@@ -1,13 +1,13 @@
-import mysql from 'mysql';
+const mysql = require('mysql2/promise');
 
-import keys from "./keys";
 
-const pool = mysql.createPool(keys.database);
-
-pool.getConnection((err, connection) => {
-    if (err) throw err; connection.release(); 
-    console.log('BD conectada sin problemas'); 
-
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    database: 'ng_tareas_db',
+    password: 'admin',
+    waitForConnections: true,
+    queueLimit: 0
 });
 
 export default pool;

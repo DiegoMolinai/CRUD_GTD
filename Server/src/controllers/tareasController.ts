@@ -1,21 +1,38 @@
 import { Request, Response } from 'express';
 
 import pool from '../database';
-
-
 class TareasController{
     
-    public index (req: Request, res: Response) {
-        pool.query('DESCRIBE tareas');
-        res.json('hola diego');
+    public async list (req: Request, res: Response) {
+        const tareas = await pool.query('SELECT * FROM tareas');
+        res.json(tareas[0]);
     }
 
-    public create (req: Request, res: Response){
-        res.json({text: 'creando una tarea'});
+    public async getOne(req:Request, res:Response): Promise<any>{
+        const {id} = req.params;
+        const tareas = await pool.query('SELECT * FROM tareas WHERE id = ?', [id]);
+        if (tareas.length > 0) {
+            return res.json(tareas[0])
+        }
+        res.status(404).json({text:'La tarea no existe'})
     }
 
+    public async create (req: Request, res: Response): Promise<void>{
+        const tareacreada = await pool.query('INSERT INTO tareas set ?',[req.body]);
+        res.json({message: 'Tarea Guardada'});
+    }
 
+    public async delete (req:Request, res: Response): Promise<void>{
+        const {id} = req.params;
+        await pool.query('DELETE FROM tareas WHERE id = ?',[id]);
+        res.json({text:'Tarea Eliminada'});
+    }
 
+    public async update (req:Request, res:Response): Promise<void>{
+        const {id} = req.params;
+        await pool.query('UPDATE tareas set ? WHERE id = ?', [req.body,id])
+        res.json({text:'Tarea actualizada'})
+    }
 }
 
 const tareasController = new TareasController();

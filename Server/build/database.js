@@ -1,15 +1,12 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const mysql_1 = __importDefault(require("mysql"));
-const keys_1 = __importDefault(require("./keys"));
-const pool = mysql_1.default.createPool(keys_1.default.database);
-pool.getConnection((err, connection) => {
-    if (err)
-        throw err;
-    connection.release();
-    console.log('BD conectada sin problemas');
+const mysql = require('mysql2/promise');
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    database: 'ng_tareas_db',
+    password: 'admin',
+    waitForConnections: true,
+    queueLimit: 0
 });
 exports.default = pool;

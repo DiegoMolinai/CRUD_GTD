@@ -9,8 +9,11 @@ class TareasRoutes {
     }
 
     config():void{
-        this.router.get('/', tareasController.index)
+        this.router.get('/', tareasController.list)
+        this.router.get('/:id', tareasController.getOne)
         this.router.post('/', tareasController.create);
+        this.router.delete('/:id',tareasController.delete);
+        this.router.put('/:id',tareasController.update);
     }
 }
 

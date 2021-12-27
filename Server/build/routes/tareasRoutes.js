@@ -11,8 +11,11 @@ class TareasRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', tareasController_1.default.index);
+        this.router.get('/', tareasController_1.default.list);
+        this.router.get('/:id', tareasController_1.default.getOne);
         this.router.post('/', tareasController_1.default.create);
+        this.router.delete('/:id', tareasController_1.default.delete);
+        this.router.put('/:id', tareasController_1.default.update);
     }
 }
 const tareasRoutes = new TareasRoutes();

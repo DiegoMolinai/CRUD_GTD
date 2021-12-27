@@ -1,1 +1,21 @@
-<p>lista-tareas works!</p>
+<div class="col-md-4" *ngFor="let tarea of tareas">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            {{tarea.titulo}}
+        </div>
+        <img src="{{tarea.imagen}}" class="card img-top" alt="">
+        <div class="card-body">
+            <p>{{tarea.descripcion}}</p>
+            <a href="" class="btn btn-info btn-block">Editar Tarea
+
+            </a>
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
