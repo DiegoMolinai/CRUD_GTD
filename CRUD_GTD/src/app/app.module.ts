@@ -8,6 +8,8 @@ import { ListaTareasComponent } from './Componentes/lista-tareas/lista-tareas.co
 import { NavegacionComponent } from './Componentes/navegacion/navegacion.component';
 import { TareasService } from './services/tareas.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     TareasService

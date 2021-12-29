@@ -46,7 +46,11 @@ class TareasController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE tareas set ? WHERE id = ?', [req.body, id]);
+            //await pool.query('UPDATE tareas set titulo=req.body.titulo WHERE id = ?', [id])
+            console.log(req.body);
+            yield database_1.default.query('UPDATE `ng_tareas_db`.`tareas` SET ? WHERE id = ?', [req.body, id]);
+            /* await pool.query('UPDATE `ng_tareas_db`.`tareas` SET titulo = ?, descripcion = ? WHERE id = ?;', [req.body[0].titulo,req.body[0].descripcion,id]) */
+            //UPDATE `ng_tareas_db`.`tareas` SET `titulo` = 'awdawd', `descripcion` = 'agageg' WHERE (`id` = '13');
             res.json({ text: 'Tarea actualizada' });
         });
     }

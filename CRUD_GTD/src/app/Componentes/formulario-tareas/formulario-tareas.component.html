@@ -1,1 +1,15 @@
-<p>formulario-tareas works!</p>
+<form>
+    <div class="mb-3">
+      <label for="textotitulo" class="form-label">Titulo Tarea</label>
+      <input type="text" class="form-control" id="textotitulo"[(ngModel)]="tituloeditado" [ngModelOptions]="{standalone: true}">
+      <div id="textotitulo" class="form-text">Aqui se cambiara el titulo de la tarea seleccionada.</div>
+    </div>
+    <div class="mb-3">
+      <label for="textodescripcion" class="form-label">Descripcion Tarea</label>
+      <input type="text" class="form-control" id="textodescripcion" [(ngModel)]="descripcioneditada" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="row">
+      <button [routerLink]="['/tareas/editar',tarea.id]" class="btn btn-primary" (click)="edit ? updateTarea() : guardarTarea()">Guardar</button>
+      <button class="btn btn-danger" (click)="salir()">Salir</button>
+    </div>
+</form>

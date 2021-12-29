@@ -27,7 +27,9 @@ export class TareasService {
     return this.http.delete('http://localhost:3000/api/tareas/' + id);
   }
 
-  updateTarea(id: string,updatedTarea: Tarea): Observable<Tarea> {
-    return this.http.put('http://localhost:3000/api/tareas'+id,updatedTarea);
+  updateTarea(id: string,updatedTarea: Tarea):Observable<Tarea> {
+    console.log(updatedTarea);
+    console.log(id);
+    return this.http.put('http://localhost:3000/api/tareas/'+id,updatedTarea);
   }
 }

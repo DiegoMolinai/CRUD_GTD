@@ -1,6 +1,6 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Tarea } from 'src/app/models/Tarea';
 import { TareasService } from '../../services/tareas.service'
 
 @Component({
@@ -11,10 +11,17 @@ import { TareasService } from '../../services/tareas.service'
 export class ListaTareasComponent implements OnInit {
 
   tareas: any = []
+  id:string|null=null;
+  tareaEditar: Tarea = {
+    titulo:'',
+    descripcion:'',
+    creacion:''
+  }
 
-  constructor(private tareasService: TareasService) { }
+  constructor(private tareasService: TareasService, private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.id=this.route.snapshot.paramMap.get('id');
     this.tareasService.getTareas().subscribe(
       res => {
         this.tareas = res;
@@ -23,4 +30,21 @@ export class ListaTareasComponent implements OnInit {
     )
   }
 
+  borrarTarea(id:string){
+    this.tareasService.deleteTarea(id).subscribe(
+      res => {
+        window.location.reload();
+      },
+      err => console.log(err)
+    )
+  }
+
+  editarTarea(id:string){
+    this.tareasService.getTarea(id).subscribe(
+      res => {
+        this.tareaEditar = res;
+        this.router.navigate(['/tareas/editar' + id]);
+      }
+    );
+  }
 }

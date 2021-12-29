@@ -1,21 +1,24 @@
-<div class="col-md-4" *ngFor="let tarea of tareas">
-    <div class="card text-center">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            {{tarea.titulo}}
+<div class="row" >
+    <div class="container" style="text-align:center;">
+        <iframe width="840" height="630" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe> 
+    </div>
+    <div class="col-md-4" *ngFor="let tarea of tareas">
+        <div class="card text-center">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                {{tarea.titulo}}
+            </div>
+            <img src="{{tarea.imagen}}" class="card img-top" alt="">
+            <div class="card-body">
+                <div style="background-color: #cfc ; border: 3px solid black;justify-content: center">
+                    <p style="color: black; font-weight: bold;justify-content: center; font-size: 125%;">{{tarea.descripcion}}</p>
+                </div>
+                <hr>
+                <div class="row">
+                    <button class="btn btn-primary" [routerLink]="['/tareas/editar',tarea.id]">Editar Tarea</button>
+                    <button class="btn btn-danger" (click)="borrarTarea(tarea.id)">Borrar Tarea</button>
+                </div>
+                </div>
         </div>
-        <img src="{{tarea.imagen}}" class="card img-top" alt="">
-        <div class="card-body">
-            <p>{{tarea.descripcion}}</p>
-            <a href="" class="btn btn-info btn-block">Editar Tarea
-
-            </a>
-
-
-
-
-
-
-
-        </div>
+        <hr>
     </div>
 </div>

@@ -16,6 +16,5 @@ class TareasRoutes {
         this.router.put('/:id',tareasController.update);
     }
 }
-
 const tareasRoutes = new TareasRoutes();
 export default tareasRoutes.router;

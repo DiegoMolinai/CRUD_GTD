@@ -1,6 +1,6 @@
 export interface Tarea {
-    id?: number;
+    id?: number|string;
     titulo?: string;
     descripcion?: string;
-    creacion?: Date;
+    creacion?: string;
 }

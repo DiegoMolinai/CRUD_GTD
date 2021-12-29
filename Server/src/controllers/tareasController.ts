@@ -12,7 +12,7 @@ class TareasController{
         const {id} = req.params;
         const tareas = await pool.query('SELECT * FROM tareas WHERE id = ?', [id]);
         if (tareas.length > 0) {
-            return res.json(tareas[0])
+            return res.json(tareas[0]);
         }
         res.status(404).json({text:'La tarea no existe'})
     }
@@ -30,7 +30,11 @@ class TareasController{
 
     public async update (req:Request, res:Response): Promise<void>{
         const {id} = req.params;
-        await pool.query('UPDATE tareas set ? WHERE id = ?', [req.body,id])
+        //await pool.query('UPDATE tareas set titulo=req.body.titulo WHERE id = ?', [id])
+        console.log(req.body);
+        await pool.query('UPDATE `ng_tareas_db`.`tareas` SET ? WHERE id = ?', [req.body,id])
+        /* await pool.query('UPDATE `ng_tareas_db`.`tareas` SET titulo = ?, descripcion = ? WHERE id = ?;', [req.body[0].titulo,req.body[0].descripcion,id]) */
+        //UPDATE `ng_tareas_db`.`tareas` SET `titulo` = 'awdawd', `descripcion` = 'agageg' WHERE (`id` = '13');
         res.json({text:'Tarea actualizada'})
     }
 }
