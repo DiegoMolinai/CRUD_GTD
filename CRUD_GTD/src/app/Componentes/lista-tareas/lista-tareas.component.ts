@@ -39,12 +39,4 @@ export class ListaTareasComponent implements OnInit {
     )
   }
 
-  editarTarea(id:string){
-    this.tareasService.getTarea(id).subscribe(
-      res => {
-        this.tareaEditar = res;
-        this.router.navigate(['/tareas/editar' + id]);
-      }
-    );
-  }
 }

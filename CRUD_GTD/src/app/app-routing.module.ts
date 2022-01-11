@@ -5,6 +5,7 @@ import { FormularioTareasComponent } from './Componentes/formulario-tareas//form
 
 const routes: Routes = [
   {path:'', redirectTo: '/tareas', pathMatch:'full'},
+  {path:'tareas/', redirectTo: '/tareas'},
   {path: 'tareas', component:ListaTareasComponent},
   {path: 'tareas/add', component: FormularioTareasComponent},
   {path: 'tareas/editar/:id', component:FormularioTareasComponent}

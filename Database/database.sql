@@ -9,7 +9,7 @@ CREATE TABLE tareas(
     titulo VARCHAR(180),
     descripcion VARCHAR(255),
     imagen VARCHAR(200),
-    creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    creacion VARCHAR(180)
 );
 
 
